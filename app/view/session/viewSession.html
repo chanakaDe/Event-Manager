@@ -1,0 +1,75 @@
+<div id="page-wrapper" ng-controller="ViewAllSessions">
+    <div class="graphs">
+        <div class="xs">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Event Manager / View Sessions</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="horizontal-form">
+
+                            <div>
+                                <div class="card" style="cursor: pointer" ng-repeat="session in allSessions"
+                                     ng-click="viewDetailsModal(session)">
+                                    <div class="card-content" style="background-color: #c0cdda">
+                                        <p style="font-size: x-large">{{session.title}}</p>
+                                    </div>
+                                    <div class="card-action">
+                                        <p style="margin-bottom: 1px"><b>{{session.subtitle}}</b></p>
+
+                                        <p style="margin-bottom: 1px">{{session.start_time | date:"dd/MM/yyyy 'at'
+                                            h:mma"}} - {{session.end_time | date:"dd/MM/yyyy 'at' h:mma"}}</p>
+
+                                        <p style="color: #6e716c;margin-bottom: 1px">{{session.abstract}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start of details modal-->
+    <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #c0cdda">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                    </button>
+                    <h3 class="modal-title">{{selectedSession.title}}</h3>
+                </div>
+                <div class="modal-body">
+                    <h4>{{selectedSession.subtitle}}</h4>
+
+                    <div class="row" style="padding-left: 10px;padding-right: 10px;">
+                        <div class="col-lg-4 label label-success" style="font-size: larger">
+                            <b>Duration : </b>{{selectedSession.start_time | date:"h:mm"}} - {{selectedSession.end_time
+                            |
+                            date:"h:mm"}}
+                        </div>
+                        <div class="col-lg-4 label label-info" style="font-size: larger">
+                            <b>Type : </b>{{selectedSession.type}}
+                        </div>
+                        <div class="col-lg-4 label label-primary" style="font-size: larger">
+                            <b>Level : </b>{{selectedSession.level}}
+                        </div>
+                    </div>
+                    <h4>Abstract</h4>
+
+                    <p>{{selectedSession.abstract}}</p>
+                    <h4>Description</h4>
+
+                    <p>{{selectedSession.description}}</p>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of details modal-->

@@ -1,0 +1,59 @@
+<div id="page-wrapper" ng-controller="GroupManageController">
+    <div class="graphs">
+        <div class="xs">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Group Management</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="horizontal-form">
+                            <form class="form-horizontal">
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>Branch</b><span
+                                            style="color: red">*</span></label>
+
+                                    <div class="col-sm-3">
+                                        <select class="form-control" ng-model="customerFile.branch"
+                                                ng-click="branchClick()" id="branch">
+                                            <option value="">Select Branch</option>
+                                            <option ng-repeat="data in allBranch" value="{{data.branchid}}">
+                                                {{data.name}} - {{data.town}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <label class="col-sm-1 control-label"><b>Center</b><span
+                                            style="color: red">*</span></label>
+
+                                    <div class="col-sm-3">
+                                        <select class="form-control" id="center" ng-model="customerFile.center"
+                                                ng-click="centerClick()">
+                                            <option value="">Select Center</option>
+                                            <option
+                                                    ng-repeat="data in allCenters" value="{{data.centerid}}">
+                                                {{data.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row" style="padding-left: 100px;padding-right: 100px;">
+                                    <div class="form">
+                                        <label>Ref ID :</label>
+                                        <input type="text" placeholder="Enter Ref ID" class="form-control">
+                                        <label>Group name :</label>
+                                        <input type="text" placeholder="Enter group name" class="form-control">
+                                        <br>
+                                        <button class="btn btn-primary">Save group</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

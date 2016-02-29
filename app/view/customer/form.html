@@ -1,0 +1,250 @@
+<div id="page-wrapper" ng-controller="AddCustomer">
+    <div class="graphs">
+        <div class="xs">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Customer Management / Add new customer</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="horizontal-form">
+                            <form class="form-horizontal">
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"></label>
+
+                                    <div class="col-sm-8" id="topNav">
+                                        <span>System information</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>Select Branch</b><span
+                                            style="color: red">*</span></label>
+
+                                    <div class="col-sm-8"><select class="form-control" ng-model="customer.branch"
+                                                                  ng-click="getCenters()"
+                                                                  id="branch">
+                                        <option value="">Select Branch</option>
+                                        <option
+                                                ng-repeat="data in allBranch" value="{{data.branchid}}">
+                                            {{data.name}} - {{data.town}}
+                                        </option>
+                                    </select></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>Select Center</b><span
+                                            style="color: red">*</span></label>
+
+                                    <div class="col-sm-8"><select class="form-control" ng-model="customer.center"
+                                                                  id="center"
+                                                                  ng-click="getCustomerCode()"
+                                            >
+                                        <option value="">Select Center</option>
+                                        <option
+                                                ng-repeat="data in allCenters" value="{{data.centerid}}">
+                                            {{data.name}}
+                                        </option>
+                                    </select></div>
+                                </div>
+                                <hr style=" background-color: #eee;border: 0 none;color: #eee;height: 3px;">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>Customer ID</b><span
+                                            style="color: red">*</span></label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="customer.id" id="id"
+                                               placeholder="Enter Customer ID" readonly>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>Customer NIC</b><span
+                                            style="color: red">*</span></label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="customer.nic" id="nic"
+                                               placeholder="Enter Customer NIC">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="checkbox-inline1"><label><input type="checkbox"
+                                                                                    ng-model="generateValue"
+                                                                                    ng-click="getCheckBoxValue()">
+                                            Generate</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr style=" background-color: #eee;border: 0 none;color: #eee;height: 3px;">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"></label>
+
+                                    <div class="col-sm-8">
+                                        <span>Basic information</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>Full name</b><span
+                                            style="color: red">*</span></label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="customer.name" id="name"
+                                               placeholder="Enter full name">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Name with initials</b><span
+                                            style="color: red">*</span></label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="customer.initials"
+                                               id="initials"
+                                               placeholder="Enter name with initials">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Select Gender</label>
+
+                                    <div class="col-sm-8"><select class="form-control" ng-model="customer.gender">
+                                        <option value="">Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+
+                                    </select></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Date of birth</b></label>
+
+                                    <div class="col-sm-8">
+                                        <input id="datetimepicker" type="text" class="form-control"
+                                               ng-model="customer.dob"
+                                               placeholder="YYYY-MM-DD">
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>Profession Type</b></label>
+
+                                    <div class="col-sm-8"><select class="form-control"
+                                                                  ng-model="customer.businesstypeid"
+                                                                  id="businesstypeid">
+                                        <option value="">Select Type</option>
+                                        <option ng-repeat="data in allBusiness" value="{{data.businessTypeid}}">
+                                            {{data.businessTypeName}}
+                                        </option>
+
+                                    </select></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Civil status<span
+                                            style="color: red">*</span></label>
+
+                                    <div class="col-sm-8"><select class="form-control"
+                                                                  ng-model="customer.civilStatus" id="civilStatus">
+                                        <option value="">Select status</option>
+                                        <option value="male">Married</option>
+                                        <option value="female">Single</option>
+                                        <option value="female">Widowed</option>
+
+                                    </select></div>
+                                </div>
+                                <hr style=" background-color: #eee;border: 0 none;color: #eee;height: 3px;">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"></label>
+
+                                    <div class="col-sm-8">
+                                        <span>Contact information</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>Address</b><span
+                                            style="color: red">*</span></label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="customer.address"
+                                               id="address"
+                                               placeholder="Enter address">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>City</b><span
+                                            style="color: red">*</span></label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="customer.city" id="city"
+                                               placeholder="Enter city">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Province</label>
+
+                                    <div class="col-sm-8">
+                                        <select class="form-control"
+                                                ng-model="customer.province">
+                                            <option value="">Select province</option>
+                                            <option value="Western">Western</option>
+                                            <option value="Northern">Northern</option>
+                                            <option value="Southern">Southern</option>
+                                            <option value="North Central">North Central</option>
+                                            <option value="Central">Central</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>Telephone No</b></label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" only-digits class="form-control" ng-model="customer.tpNo"
+                                               id="tpNo"
+                                               placeholder="Enter telephone no">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"></label>
+
+                                    <div class="col-sm-8">
+                                        <button class="btn btn-primary" ng-click="addNewCustomer()">Save Customer
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    jQuery('#datetimepicker').datetimepicker({
+        lang: 'en',
+        i18n: {
+            en: {
+                months: [
+                    'January', 'February', 'March', 'April',
+                    'May', 'June', 'July', 'August',
+                    'September', 'October', 'November', 'December'
+                ],
+                dayOfWeek: [
+                    "So.", "Mo", "Di", "Mi",
+                    "Do", "Fr", "Sa."
+                ]
+            }
+        },
+        timepicker: false,
+        format: 'Y-m-d'
+    });
+</script>

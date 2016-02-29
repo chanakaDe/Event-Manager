@@ -1,0 +1,176 @@
+<div id="page-wrapper" ng-controller="AddSessionController">
+    <div class="graphs">
+        <div class="xs">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Event Manager / Add New Session</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="horizontal-form">
+                            <form class="form-horizontal">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>Title</b></label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="session.title" id="title"
+                                               placeholder="Enter Session Title">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>Subtitle</b></label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="session.subtitle"
+                                               id="subtitle"
+                                               placeholder="Enter Session Subtitle">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>Abstract</b></label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="session.abstract"
+                                               id="abstract"
+                                               placeholder="Enter Session Abstract">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>Description</b></label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="session.description"
+                                               id="description"
+                                               placeholder="Enter Session Description">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>Start Time</b></label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="session.startTime"
+                                               id="startTime"
+                                               placeholder="Enter Session Start Time">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>End Time</b></label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="session.endTime"
+                                               id="endTime"
+                                               placeholder="Enter Session End Time">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Session Type</label>
+
+                                    <div class="col-sm-8"><select class="form-control" ng-model="session.type"
+                                                                  id="type">
+                                        <option value="">Select Type</option>
+                                        <option value="Talk">Talk</option>
+                                        <option value="Speech">Speech</option>
+
+                                    </select></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Speaker</label>
+
+                                    <div class="col-sm-8"><select class="form-control" ng-model="session.speaker"
+                                                                  id="speaker">
+                                        <option value="">Select Type</option>
+                                        <option value="Talk">Talk</option>
+                                        <option value="Speech">Speech</option>
+
+                                    </select></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Level</label>
+
+                                    <div class="col-sm-8"><select class="form-control" ng-model="session.level"
+                                                                  id="level">
+                                        <option value="">Select Type</option>
+                                        <option value="advanced">Advanced</option>
+                                        <option value="simple">Simple</option>
+                                        <option value="medium">Medium</option>
+
+                                    </select></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>MicroLocation</b></label>
+
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" ng-model="session.microLocation"
+                                               id="microLocation"
+                                               placeholder="Enter Session MicroLocation">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"></label>
+
+                                    <div class="col-sm-8">
+                                        <button class="btn btn-primary" ng-click="saveSession()">Save Session
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    jQuery('#startTime').datetimepicker({
+        lang: 'en',
+        i18n: {
+            en: {
+                months: [
+                    'Januar', 'Februar', 'März', 'April',
+                    'Mai', 'Juni', 'Juli', 'August',
+                    'September', 'Oktober', 'November', 'Dezember'
+                ],
+                dayOfWeek: [
+                    "Su.", "Mo", "Tu", "We",
+                    "Th", "Fr", "Sa."
+                ]
+            }
+        },
+        timepicker: true,
+        format: 'Y-m-d g:i A',
+        formatTime: 'g:i a'
+    });
+
+    jQuery('#endTime').datetimepicker({
+        lang: 'en',
+        i18n: {
+            en: {
+                months: [
+                    'Januar', 'Februar', 'März', 'April',
+                    'Mai', 'Juni', 'Juli', 'August',
+                    'September', 'Oktober', 'November', 'Dezember'
+                ],
+                dayOfWeek: [
+                    "Su.", "Mo", "Tu", "We",
+                    "Th", "Fr", "Sa."
+                ]
+            }
+        },
+        timepicker: true,
+        format: 'Y-m-d g:i A',
+        formatTime: 'g:i a'
+    });
+</script>

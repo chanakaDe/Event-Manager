@@ -1,0 +1,268 @@
+<div id="page-wrapper" ng-controller="ViewCustomer">
+    <div class="graphs">
+        <div class="xs">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Customer Management / View all customers</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="horizontal-form">
+                            <form class="form-horizontal">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><b>Select Branch</b><span
+                                            style="color: red">*</span></label>
+
+                                    <div class="col-sm-4">
+                                        <select class="form-control" ng-model="customerFile.branch"
+                                                ng-click="branchClick()" id="branch">
+                                            <option value="">Select Branch</option>
+                                            <option ng-repeat="data in allBranch" value="{{data.branchid}}">
+                                                {{data.name}} - {{data.town}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <label class="col-sm-1 control-label"><b>Center</b><span
+                                            style="color: red">*</span></label>
+
+                                    <div class="col-sm-4">
+                                        <select class="form-control" id="center" ng-model="customerFile.center"
+                                                ng-click="centerClick()">
+                                            <option value="">Select Center</option>
+                                            <option
+                                                    ng-repeat="data in allCenters" value="{{data.centerid}}">
+                                                {{data.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>Customer Code</th>
+                                        <th>Customer NIC</th>
+                                        <th>Branch</th>
+                                        <th>Center</th>
+                                        <th>Full name</th>
+                                        <th>Telephone no</th>
+                                        <th>Profession type</th>
+                                        <th>More</th>
+                                    </tr>
+                                    <tr ng-repeat="data in allCustomer">
+                                        <td>{{data.code}}</td>
+                                        <td>{{data.nic}}</td>
+                                        <td>{{data.branchid}}</td>
+                                        <td>{{data.centerid}}</td>
+                                        <td>{{data.name}}</td>
+                                        <td>{{data.tpNo}}</td>
+                                        <td>{{data.businessTypeName}}</td>
+
+                                        <td>
+                                            <button ng-click="updateCustomer(data)" class="btn btn-primary btn-xs">Edit
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Customer Information</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"></label>
+
+                            <div class="col-sm-8">
+                                <span>Customer information</span>
+                            </div>
+                        </div>
+
+                        <hr style=" background-color: #eee;border: 0 none;color: #eee;height: 3px;">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><b>Customer ID</b><span
+                                    style="color: red">*</span></label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="customerid" id="id"
+                                       placeholder="Enter Customer ID" readonly>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><b>Customer NIC</b><span
+                                    style="color: red">*</span></label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="nic" id="nic"
+                                       placeholder="Enter Customer NIC" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><b>Customer Code</b><span
+                                    style="color: red">*</span></label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="custId"
+                                       placeholder="Enter Customer NIC" readonly>
+                            </div>
+                        </div>
+
+                        <hr style=" background-color: #eee;border: 0 none;color: #eee;height: 3px;">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"></label>
+
+                            <div class="col-sm-8">
+                                <span>Basic information</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><b>Full name</b><span
+                                    style="color: red">*</span></label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="name" id="name"
+                                       placeholder="Enter full name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Name with initials</b><span
+                                    style="color: red">*</span></label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="initials"
+                                       placeholder="Enter name with initials">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Select Gender</label>
+
+                            <div class="col-sm-8"><select class="form-control" ng-model="gender">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+
+                            </select></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Date of birth</b><span
+                                    style="color: red">*</span></label>
+
+                            <div class="col-sm-8">
+                                <input id="datetimepicker" type="text" class="form-control"
+                                       ng-model="dobOfUpdate"
+                                       placeholder="Enter date of birth">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><b>Profession Type</b><span
+                                    style="color: red">*</span></label>
+
+                            <div class="col-sm-8"><select class="form-control"
+                                                          ng-model="businessType" id="businessType">
+                                <option value="">Select Type</option>
+                                <option ng-repeat="data in allBusiness" value="{{data.businessTypeid}}">
+                                    {{data.businessTypeName}}
+                                </option>
+
+                            </select></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Civil status</label>
+
+                            <div class="col-sm-8"><select class="form-control"
+                                                          ng-model="civilStatus">
+                                <option value="">Select status</option>
+                                <option value="male">Married</option>
+                                <option value="female">Single</option>
+                                <option value="female">Widowed</option>
+
+                            </select></div>
+                        </div>
+                        <hr style=" background-color: #eee;border: 0 none;color: #eee;height: 3px;">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"></label>
+
+                            <div class="col-sm-8">
+                                <span>Contact information</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><b>Address</b><span
+                                    style="color: red">*</span></label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="address"
+                                       id="address"
+                                       placeholder="Enter address">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><b>City</b><span
+                                    style="color: red">*</span></label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="city" id="city"
+                                       placeholder="Enter city">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Province</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="province"
+                                       placeholder="Enter Province">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><b>Telephone No</b><span
+                                    style="color: red">*</span></label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" ng-model="tpNo" id="tpNo"
+                                       placeholder="Enter telephone no">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"></label>
+
+                            <div class="col-sm-8">
+                                <button class="btn btn-primary" ng-click="updateCustomerButton()">Update Customer
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

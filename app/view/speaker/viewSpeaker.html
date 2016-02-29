@@ -1,0 +1,43 @@
+<div id="page-wrapper" ng-controller="ViewAllSpeakers">
+    <div class="graphs">
+        <div class="xs">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Event Manager / View Speakers</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="horizontal-form">
+
+                            <div class="row" style="padding-left: 10px;padding-right: 10px;">
+                                <div class="card col-lg-3" style="cursor: pointer" ng-repeat="speaker in allSpeakers">
+                                    <div class="card-image">
+                                        <img class="img-responsive"
+                                             src="api/{{speaker.photo}}">
+                                        <!--<span class="card-title" style="color: black">Material Cards</span>-->
+                                    </div>
+                                    <div class="card-content">
+                                        <p style="font-size: x-large">{{speaker.name}}</p>
+                                    </div>
+                                    <div class="card-action">
+                                        <p style="margin-bottom: 1px"><b>{{speaker.position}} ,
+                                            {{speaker.organisation}}</b></p>
+
+                                        <p style="color: #6e716c;margin-bottom: 1px">{{speaker.bio}}</p>
+
+                                        <p>
+                                            <i class="fa fa-github"></i>
+                                            <i class="fa fa-facebook-official"></i>
+                                            <i class="fa fa-twitter"></i>
+                                            <i class="fa fa-linkedin-square"></i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
